@@ -10,7 +10,7 @@ cp $file $copy
 echo "add a line in the" >> $copy
 
 echo ""
-echo "Copying /etc/services inside the current directory and adding a line inside"
+printf "Copying /etc/services inside the current directory and adding a line inside\n"
 echo ""
 
 for item in sha256 sha1 sha384 md5
@@ -19,7 +19,7 @@ do
 done
 
 echo ""
-echo "Und jetzt mit Openssl"
+printf "Und jetzt mit Openssl\n"
 echo ""
 sleep 2
 
@@ -36,7 +36,7 @@ do
 done
 
 echo ""
-echo "Und jetzt noch mit SHA512, whirlpool und RIPEMD160"
+printf "Und jetzt noch mit SHA512, whirlpool und RIPEMD160\n"
 echo ""
 sleep 2
 
