@@ -1,0 +1,49 @@
+a) Remove a file
+b) /usr/bin/rm
+c) rm file.txt
+d) unlinkat()
+
+a) Move (rename) file
+b) /usr/bin/mv
+c) mv file.txt new_name.txt
+d) renameat2()
+
+a) Change file mode
+b) /usr/bin/chmod
+c) chmod +x file.txt
+d) fchmodat()
+
+a) Change file owner / group
+b) /usr/bin/chown
+c) chown user file_name
+d) fchownat()
+
+a) Make directory
+b) /usr/bin/mkdir
+c) mkdir new_dir
+d) mkdir()
+
+a) Remove empty directory
+b) /usr/bin/rmdir
+c) rmdir dir
+d) rmdir()
+
+a) Send a signal to the process
+b) /usr/bin/kill
+c) kill 1
+d) kill()
+
+a) Make links between files
+b) /usr/bin/ln
+c) ln -s target link_name
+d) symlinkat()
+
+a) Delay for a specified amount of time
+b) /usr/bin/sleep
+c) sleep 1
+d) clock_nanosleep()
+
+a) GNU Wget is a free utility for non-interactive download of files from the Web
+b) /usr/bin/wget
+c) wget url
+d) socket(), connect(), recvfrom()
