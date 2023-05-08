@@ -1,0 +1,14 @@
+openssl dgst -sha256 -mac HMAC -macopt hexkey:0123456789abcdef8877665544332211 /etc/services
+>>> HMAC-SHA2-256(/etc/services)= b720658651b2829446e7e1d69987cd2dfe02fd4249cb62175f0e80308995a2bb
+
+od -t x4 /dev/urandom | head -1 | cut -c 17- | sed -e "s/ //g"
+>>> b93135adaeea1e22963c475a
+
+od -t x4 => display the contents of binary files using the format hexadecimal 4
+/dev/urandom => create random bits
+head -1 => display one line
+cut -c 17- => keep the string at start of char 17
+sed -e "s/ //g" => replace white space with no gap
+
+od -t x4 /dev/urandom | head -1 | cut -c 9- | sed -e "s/ //g"
+>>> a96bfed5fc5fca001937e72df829e6bd ( => 32 bit en base x4 = 4 x 32 => 128)
