@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
             return 1;
         }
 
-        printf("File name:               %s\n", argv[i]);
+        printf("File name:                %s\n", argv[i]);
         printf("File type:                ");
 
         switch (sb.st_mode & S_IFMT) {
