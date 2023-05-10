@@ -35,3 +35,6 @@ ls -l "$soft_link".tar.gz
 # lrwxrwxrwx 1 om3re om3re 19 May 10 23:41 soft_link -> /tmp/tmp.2SEXrF0nij
 # -rw-r--r-- 1 om3re om3re 1054720 May 10 23:41 /tmp/tmp.2SEXrF0nij.tar.gz
 # -rw-r--r-- 1 om3re om3re 1054720 May 10 23:41 soft_link.tar.gz
+# The difference is due to the fact that when creating the second archive tar follows the soft link and includes the original file in the archive. 
+# What means that the second archive contains the original file and the soft link to it. The first archive contains only the original file.
+# to avoid this behavior you can use the option -h (or --dereference) of tar command. So tar will not follow the soft link and will include only the soft link itself in the archive.
