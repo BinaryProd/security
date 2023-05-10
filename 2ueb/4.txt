@@ -4,11 +4,18 @@ openssl dgst -sha256 -mac HMAC -macopt hexkey:0123456789abcdef8877665544332211 /
 od -t x4 /dev/urandom | head -1 | cut -c 17- | sed -e "s/ //g"
 >>> b93135adaeea1e22963c475a
 
-od -t x4 => display the contents of binary files using the format hexadecimal 4
+od => octal dump to display the content of /dev/urandom
+  -t x4 => format output as a serie 4-byte hexadecimal integers (x => hexadecimal, 4 => 4-byte)
 /dev/urandom => create random bits
-head -1 => display one line
-cut -c 17- => keep the string at start of char 17
-sed -e "s/ //g" => replace white space with no gap
+head => specifies that wo want to print the first few lines of a file
+  -1 => display only the first line
+cut => extract sections from each line of a file
+  -c => we want to extract characters based on their position
+  17- => we want to extract characters starting from the 17th position
+sed => tool for processing text and perform operations on it searchingm replacing, inserting, deleting certain paterns
+  -e => we want to execute the command that follows
+  "s/ //g" => replace white space with no gap (s => substitute, g => global same as vim /neovim:%s/ //g)
+  pattern : s/pattern/replacement/flags
 
 od -t x4 /dev/urandom | head -1 | cut -c 9- | sed -e "s/ //g"
 >>> a96bfed5fc5fca001937e72df829e6bd ( => 32 bit en base x4 = 4 x 32 => 128)
