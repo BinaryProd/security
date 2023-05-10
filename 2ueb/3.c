@@ -1,10 +1,9 @@
-#include <stdio.h>
+#include <stdio.h>    
 #include <time.h>
-#include <pwd.h>
-#include <grp.h>
-#include <stdint.h>
-#include <sys/stat.h>
-
+#include <pwd.h>      // for getpwuid
+#include <grp.h>      // for getgrgid
+#include <stdint.h>   // for uintmax_t
+#include <sys/stat.h> // for lstat
 
 int main(int argc, char **argv) {
     if ( argc < 2 ) {
