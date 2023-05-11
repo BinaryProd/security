@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
         printf("Ownership:                UID=%ju   GID=%ju\n", 
                 (uintmax_t) sb.st_uid, (uintmax_t) sb.st_gid);
         printf("Mode:                     %jo (octal)\n",
-                (uintmax_t) sb.st_mode);
+                (uintmax_t) sb.st_mode & 07777);
 
         printf("Last file access:         %s", ctime(&sb.st_atime));
         printf("Last status change:       %s", ctime(&sb.st_ctime));
