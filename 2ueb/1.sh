@@ -16,8 +16,8 @@ ln -s "$temp_file" "$soft_link"
 ls -l "$hardlink" || { echo "Error: ls -l doesn't work for $hardlink"; exit 1; }
 ls -l "$soft_link" || { echo "Error: ls -l doesn't work for $soft_link"; exit 1; }
 
-tar -c -f "$hardlink".tar.gz "$hardlink" 2> /dev/null
-tar -c -f "$soft_link".tar.gz "$soft_link" 2> /dev/null
+tar -c -f "$hardlink".tar.gz "$hardlink" "$temp_file" 2> /dev/null
+tar -c -f "$soft_link".tar.gz "$soft_link" "$temp_file"  2> /dev/null
 
 ls -l "$hardlink".tar.gz
 ls -l "$soft_link".tar.gz
