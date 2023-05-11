@@ -15,26 +15,19 @@ ls -l "$soft_link" || { echo "Error: ls -l doesn't work for $soft_link"; exit 1;
 
 
 tar -c -f "$temp_file".tar.gz "$temp_file" 2> /dev/null
-tar -c -f "$soft_link".tar.gz "$temp_file" 2> /dev/null
+tar -c -f "$soft_link".tar.gz "$soft_link" 2> /dev/null
 
 ls -l "$temp_file".tar.gz
 ls -l "$soft_link".tar.gz
 
-# -rw------- 1 idefux idefux 1048576  5. Mai 12:55 /tmp/tmp.R5ddRs4C3S
-# lrwxrwxrwx 1 idefux idefux 19  5. Mai 12:55 soft_link -> /tmp/tmp.R5ddRs4C3S
-# 
-# -rw-r--r-- 1 idefux idefux 1054720  5. Mai 12:55 /tmp/tmp.R5ddRs4C3S.tar.gz
-# -rw-r--r-- 1 idefux idefux 1054720  5. Mai 12:55 soft_link.tar.gz
-#
-# Selbe groesse aber groesser als orginal file
+# 1+0 Datensätze ein
+# 1+0 Datensätze aus
+# 1048576 Bytes (1,0 MB, 1,0 MiB) kopiert, 0,0059948 s, 175 MB/s
+# -rw------- 1 idefux idefux 1048576 11. Mai 12:00 /tmp/tmp.6oIK6qxCJg
+# ln: die symbolische Verknüpfung 'soft_link' konnte nicht angelegt werden: Die Datei existiert bereits
+# lrwxrwxrwx 1 idefux idefux 19 11. Mai 11:57 soft_link -> /tmp/tmp.zVOcTpIEkX
+# -rw-r--r-- 1 idefux idefux 1054720 11. Mai 12:00 /tmp/tmp.6oIK6qxCJg.tar.gz
+# -rw-r--r-- 1 idefux idefux 10240 11. Mai 12:00 soft_link.tar.gz
 
-# 1+0 records in
-# 1+0 records out
-# 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.010608 s, 98.8 MB/s
-# -rw------- 1 om3re om3re 1048576 May 10 23:41 /tmp/tmp.2SEXrF0nij
-# lrwxrwxrwx 1 om3re om3re 19 May 10 23:41 soft_link -> /tmp/tmp.2SEXrF0nij
-# -rw-r--r-- 1 om3re om3re 1054720 May 10 23:41 /tmp/tmp.2SEXrF0nij.tar.gz
-# -rw-r--r-- 1 om3re om3re 1054720 May 10 23:41 soft_link.tar.gz
-# The difference is due to the fact that when creating the second archive tar follows the soft link and includes the original file in the archive. 
-# What means that the second archive contains the original file and the soft link to it. The first archive contains only the original file.
-# to avoid this behavior you can use the option -h (or --dereference) of tar command. So tar will not follow the soft link and will include only the soft link itself in the archive.
+# When the original file is archived, it stores the actual data in the archive. 
+# On the other hand, when the symbolic link is archived, it stores the path to the original file in the archive, not the actual data.
