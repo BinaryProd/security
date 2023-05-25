@@ -2,3 +2,7 @@ Bild
 
 Camera : CASIO COMPUTER CO.,LTD.
 Zeitpunkt : 2020:08:22 06:25:59
+
+strings -tx flash.JPG
+hexdump -C flash.JPG
+hexdump -C flash.JPG -s xx -n xx
