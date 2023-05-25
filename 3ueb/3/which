@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]; then 
+    exit 1
+fi
+
+i=1
+while [ -n "$(echo "$PATH" | cut -f"$i" -d ":")" ]; do
+    dir=$(echo "$PATH" | cut -f"$i" -d ":" ) || exit 1
+    find "$dir" -maxdepth 1 -name "$1"
+    ((i++))
+done
+
+exit 0
