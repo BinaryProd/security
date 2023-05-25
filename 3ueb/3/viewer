@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]; then
+    exit 1
+fi
+
+file_type=$(file "$1" | cut -f2 -d ":")
+
+if echo "$file_type" | grep -q "JPEG"; then
+    xv "$1"
+elif echo "$file_type" | grep -q "PDF"; then  
+    xpdf "$1"
+elif echo "$file_type" | grep -q "text"; then  
+    less "$1"
+elif echo "$file_type" | grep -q "OpenDocument"; then  
+    libreoffice "$1"
+else 
+    {
+        xdg-open "$1"
+    } || {
+        exit 1
+    }
+fi
+
+exit 0
