@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]; then
+    exit 1
+fi
+
+for i in "$@"; do
+    file_name=$(basename "$i" .wav) || exit 1
+    ffmpeg -i "$i" -f mp3 "$file_name.mp3" || exit 1
+done
+
+exit 0
