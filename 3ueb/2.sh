@@ -4,8 +4,8 @@ fussball="fussball-tabelle.html"
 
 curl https://de.wikipedia.org/wiki/Fußball-Bundesliga_2022/23 -o "$fussball" >/dev/null 2>/dev/null
 
-begin=$(grep -E "table.*wikitable sortable" fussball-tabelle.html -n | cut -f1 -d ":" | head -1)
-numbers=$(grep -E "</tbody></table>" fussball-tabelle.html -n | cut -f1 -d ":" )
+begin=$(grep -E -n "table.*wikitable sortable" fussball-tabelle.html | cut -f1 -d ":" | head -1)
+numbers=$(grep -E -n "</tbody></table>" fussball-tabelle.html | cut -f1 -d ":" )
 end=0
 
 for number in $numbers; do
