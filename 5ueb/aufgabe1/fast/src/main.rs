@@ -17,7 +17,7 @@ fn main() {
         let results: Vec<(String, String)> = lines.par_iter().flat_map(|line| {
             let mut line_results = Vec::new();
             for password in &[password1, password2, password3, password4, password5] {
-                let hash = openssl_passwd(&line, password).unwrap();
+                let hash = openssl_passwd(line, password).unwrap();
                 let hash = &hash[3..];
 
                 if hash == *password {
