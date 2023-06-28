@@ -25,10 +25,9 @@ fi
 echo "TAN-Liste für Benutzer $username wird generiert..."
 
 for (( i=1; i<=$n; i++ )); do
-    number=$(od -An -N4 -i /dev/urandom | sed 's/[^0-9]*//g') # -An = not output address offsets; -N4 = 4 bytes; -i = decimal format 
-    rand=$(printf "%06d" $(( number % 1000000 )))
-    sha_256_hashed_rand=$( echo "$rand" | openssl dgst -sha256 )
-    echo "$rand -> $sha_256_hashed_rand"
+    number=$(shuf -i 0-9999999 -n 1)
+    sha_256_hashed_rand=$( echo "$number" | openssl dgst -sha256 )
+    echo "$number-> $sha_256_hashed_rand"
     echo "$sha_256_hashed_rand" >> "$tan_file"
 done
 
