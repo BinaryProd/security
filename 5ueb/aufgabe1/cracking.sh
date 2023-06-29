@@ -8,7 +8,7 @@ password5="7ieEwjFr\$T/jwatbzqhLZNVDEfymB41"
 
 while IFS= read -r line; do
     for password in "$password1" "$password2" "$password3" "$password4" "$password5"; do
-        hash="$(openssl passwd -1 -salt "$password" "$line")"
+        hash="$(openssl passwd -1 -salt "$password" "$line")" 
         hash="${hash:3}"
         if [ "$hash" == "$password" ]; then
             echo "The password for $password is $line"
